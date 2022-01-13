@@ -1,0 +1,32 @@
+.container{
+    height:100%;
+    
+}
+
+.sidenav{
+    width: 13rem;
+    color: white;
+    /*dica de site para consultar gradientes: cssgradient.io*/
+    background: linear-gradient(180deg, rgba(105,6,147,1) 0%, rgba(189,105,224,1) 70%, rgba(230,180,225,1) 100%);
+}
+
+img{
+    width:100%;
+    height: 7rem;
+    margin: .8rem auto 1rem auto;
+}
+
+.sidenav a{
+    color: white;    
+}
+
+
+.sidenav i{
+    margin-right: 0.6rem;  
+}
+
+.menu{
+    margin: 1rem 0 0 1rem;
+    color: white;
+    background: linear-gradient(180deg, rgba(105,6,147,1) 0%, rgba(189,105,224,1) 70%, rgba(230,180,225,1) 100%);
+}
