@@ -7,7 +7,7 @@
     width: 13rem;
     color: white;
     /*dica de site para consultar gradientes: cssgradient.io*/
-    background: linear-gradient(180deg, rgba(105,6,147,1) 0%, rgba(189,105,224,1) 70%, rgba(230,180,225,1) 100%);
+    background: linear-gradient(180deg, rgba(24,118,199,1) 0%, rgba(105,224,221,1) 70%, rgba(235,241,241,1) 100%);
 }
 
 img{
@@ -28,5 +28,5 @@ img{
 .menu{
     margin: 1rem 0 0 1rem;
     color: white;
-    background: linear-gradient(180deg, rgba(105,6,147,1) 0%, rgba(189,105,224,1) 70%, rgba(230,180,225,1) 100%);
+    background: linear-gradient(180deg, rgba(24,118,199,1) 0%, rgba(105,224,221,1) 70%, rgba(235,241,241,1) 100%);
 }
