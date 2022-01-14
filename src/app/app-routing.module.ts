@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 
 const routes: Routes = [
   {
-    path:'', component: NavComponent
+    path:'', component: NavComponent, children:[{path:'home', component: HomeComponent},]
+
+    /*vamos colocar a rota de home como filha da rota de navcomponent, a fim de que 
+    o router-outlet utilizado seja o de navcomponent. Se não houver router-outlet em navcomponent, 
+    e eu tentar acessar home, home não vai aparecer.
+     */
   }
 ];
 
