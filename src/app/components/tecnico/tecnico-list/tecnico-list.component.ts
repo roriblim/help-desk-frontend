@@ -11,10 +11,10 @@ import { Tecnico } from 'src/app/models/tecnico';
 export class TecnicoListComponent implements OnInit {
 
   ELEMENT_DATA: Tecnico[] = [
-    {id:1, nome:'rosana', cpf:'123.456.789-10', email: 'rosana@email.com', senha:'123', perfis:['0'], dataCriacao:'15/08/2022'}
+    {id:1, nome:'rosana', cpf:'123.456.789-10', email: 'rosana@email.com', senha:'123', perfis:['0'], dataCriacao:'15/08/2022', acoes:'teste'}
   ];
 
-  displayedColumns: string[] = ['a', 'b', 'c', 'd','acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email','acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

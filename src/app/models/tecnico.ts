@@ -6,4 +6,5 @@ export interface Tecnico{
     senha: string;
     perfis: string[];
     dataCriacao: any; //colocamos any porque vamos trabalhar com string e com date
+    acoes: string;
 }
