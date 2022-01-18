@@ -1,0 +1,46 @@
+.container{
+    height:100%;
+    background: linear-gradient(180deg, rgba(24,118,199,1) 0%, rgba(105,224,221,1) 70%, rgba(235,241,241,1) 100%);
+    display:flex;
+    align-items: center; /*coloca os itens de dentro ao centro (na vertical)*/
+    justify-content: center;
+}
+
+.form{
+    width: 30rem;
+    margin: auto; /*alinha o próprio elemento ao centro do container*/
+    background-color: rgb(230, 230, 230);
+    padding: 4rem 1rem;
+    border-radius: 1rem;
+    
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+}
+
+.form-container{
+    /*o meu bloco do formulário tem 70% da largura disponível
+    Note que, em vez de reduzir a width do campo do formulário em si (classe full-width),
+    eu preferi colocar esses campos nesta div, e reduzir a width da div.
+    Isso porque, com o bloco, eu posso colocar margin auto para que ele centralize!
+    Também acho que seria possível colocar colocar o display block no full width*/
+    width:70%;
+   margin:2rem auto;
+}
+
+
+.full-width{
+    width: 100%;
+}
+
+img{
+    height: 12rem;
+    width: 100%;
+    margin: 1.5rem auto;
+}
+
+button{
+    margin-top: 1.5rem;
+}
