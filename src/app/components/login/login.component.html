@@ -27,8 +27,8 @@
                placeholder="Sua senha...">
       </mat-form-field>
 
-      <button [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Entrar</button>
-      {{creds.email}}
+      <button (click)="logar()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Entrar</button>
+      
     </div>
   </form>
 </div>
