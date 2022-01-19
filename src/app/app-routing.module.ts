@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   //note que login não é filha do navcomponent, pois o menu não deve aparecer na tela de login!
   {
-    path:'', component: NavComponent, children:[
+    //o AuthGuard que vai dizer se eu posso acessar essas rotas daqui:
+    path:'', component: NavComponent, canActivate:[AuthGuard], children:[
       {path:'home', component: HomeComponent},
       {path:'tecnicos',component:TecnicoListComponent}
     ]

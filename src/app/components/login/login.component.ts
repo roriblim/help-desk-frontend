@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Credenciais } from 'src/app/models/credenciais';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    private service: AuthService)
+    private service: AuthService,
+    private router: Router)
   { }
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
           resposta => {
             //vamos salvar o token recebido no local storage (sem o Bearer)!
             this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
+            this.router.navigate(['']);
             //this.toastr.info(resposta.headers.get('Authorization'));
             },
           () => {
