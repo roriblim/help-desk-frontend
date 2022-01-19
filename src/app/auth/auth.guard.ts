@@ -12,13 +12,13 @@ export class AuthGuard implements CanActivate {
 
   }
 
-  //canActivate pode retornar qualquer desses:
-  //state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  //sempre que houver uma requisição para alguma das rotas da aplicação, o método canActivate será chamado.
+  //se o return for true, o acesso solicitado será permitido. 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let authenticated = this.authService.isAuthenticated();
 
     if(authenticated){
-      return true;
+      return true; //se retorna true, o acesso solicitado será permitido
     } else{
       this.router.navigate(['login']);
       return false; //vai dizer que, por padrão, não será possível acessar aos recursos

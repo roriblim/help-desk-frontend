@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           resposta => {
             //vamos salvar o token recebido no local storage (sem o Bearer)!
             this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
-            this.router.navigate(['']);
+            this.router.navigate(['home']);
             //this.toastr.info(resposta.headers.get('Authorization'));
             },
           () => {
