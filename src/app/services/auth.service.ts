@@ -14,4 +14,8 @@ export class AuthService {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, creds, {observe: 'response', responseType: `text` });
     //ao mesmo tempo que vou enviar as credenciais, vou aguardar como resposta o token (observe response)
   }
+
+  successfulLogin(authToken: string){
+    localStorage.setItem('token',authToken);
+  }
 }

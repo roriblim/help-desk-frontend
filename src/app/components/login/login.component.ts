@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     this.service.authenticate(this.creds) //vou enviar as credenciais para fazer login
         .subscribe(
           resposta => {
-            this.toastr.info(resposta.headers.get('Authorization'));
+            //vamos salvar o token recebido no local storage (sem o Bearer)!
+            this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
+            //this.toastr.info(resposta.headers.get('Authorization'));
             },
           () => {
             this.toastr.error('Usuário e/ou senha inválidos');
