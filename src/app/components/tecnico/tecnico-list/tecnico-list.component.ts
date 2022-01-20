@@ -37,6 +37,11 @@ export class TecnicoListComponent implements OnInit {
       //******devemos iniciar o paginator depois que os dados forem carregados!!!******
     })
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 
 
