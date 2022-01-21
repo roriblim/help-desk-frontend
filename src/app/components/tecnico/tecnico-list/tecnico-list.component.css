@@ -29,3 +29,11 @@ table {
       margin-bottom: 2rem;
   }
  
+  .edit{
+      color:rgba(0, 153, 255, 0.801);
+  }
+
+  .delete{
+      color:rgb(204, 50, 30);
+  }
+
