@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,8 +17,9 @@ export class TecnicoUpdateComponent implements OnInit {
   cpfControl: FormControl = new FormControl(null, Validators.required);
   emailControl: FormControl = new FormControl(null, Validators.email);
   senhaControl: FormControl = new FormControl(null, Validators.minLength(3));
-  tecnico: Tecnico = {id:'',nome:'',cpf:'',email:'',senha:'',perfis:[2],dataCriacao:''};
-  //botei para começar com o perfil 2, pois a checkbox de tecnico já inicia marcada
+  tecnico: Tecnico = {id:'',nome:'',cpf:'',email:'',senha:'',perfis:[],dataCriacao:''};
+  selectedPerf=[{selected: false, label: 'Admin', cod:0}, {selected: false, label: 'Cliente',cod:1}, {selected: false, label: 'Técnico',cod:2}];
+
 
   constructor(
     private tecService: TecnicoService,
@@ -33,11 +34,22 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   findById(): void{
-    this.tecService.findById(this.tecnico.id).subscribe( resposta =>
-      this.tecnico=resposta)
+    this.tecService.findById(this.tecnico.id).subscribe( 
+      resposta => {
+        this.tecnico=resposta
+        console.log(this.tecnico.perfis);
+        this.tecnico.perfis.forEach(item=>{
+          this.selectedPerf[item].selected=true;
+        })
+        console.log(this.selectedPerf);
+      })
   }
   
   update():void{
+    this.tecnico.perfis=[]
+    this.selectedPerf.forEach(item => {
+      if (item.selected) {this.tecnico.perfis.push(item.cod);}
+     })
     this.tecService.update(this.tecnico).subscribe(
       resposta => { //note ainda que, como eu não estou utilizando a resposta no código, posso substitui-la por ()
         this.toastr.success('Técnico atualizado com sucesso!','Atualização');
@@ -58,16 +70,11 @@ export class TecnicoUpdateComponent implements OnInit {
       )
     }
 
-addPerfil(perfil:any):void{
-  if (this.tecnico.perfis.includes(perfil)){
-    //esta validação é para dizer que, se o perfil já está na lista, e ele clicou de novo, é porque ele quer tirar
-    this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil),1);
-  }
-  else{
-    this.tecnico.perfis.push(perfil);
-  }
-  //console.log(this.tecnico.perfis);
-}
+    onChange(e, item) {
+      //alert(e.checked);
+      this.selectedPerf[item.cod].selected = e.checked;
+      //console.log(this.selectedPerf);
+    }
     
     
     validaCampos():boolean{

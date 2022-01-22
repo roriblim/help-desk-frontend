@@ -1,6 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ControlContainer, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Tecnico } from 'src/app/models/tecnico';
@@ -17,8 +17,8 @@ export class TecnicoCreateComponent implements OnInit {
   cpfControl: FormControl = new FormControl(null, Validators.required);
   emailControl: FormControl = new FormControl(null, Validators.email);
   senhaControl: FormControl = new FormControl(null, Validators.minLength(3));
-  tecnico: Tecnico = {id:'',nome:'',cpf:'',email:'',senha:'',perfis:[2],dataCriacao:''};
-  //botei para começar com o perfil 2, pois a checkbox de tecnico já inicia marcada
+  tecnico: Tecnico = {id:'',nome:'',cpf:'',email:'',senha:'',perfis:[],dataCriacao:''};
+  selectedPerf=[{selected: false, label: 'Admin', cod:0}, {selected: false, label: 'Cliente',cod:1}, {selected: true, label: 'Técnico',cod:2}];
 
   constructor(
     private tecService: TecnicoService,
@@ -30,6 +30,11 @@ export class TecnicoCreateComponent implements OnInit {
 
   
   create():void{
+    this.selectedPerf.forEach(item => {
+     if (item.selected) {this.tecnico.perfis.push(item.cod);}
+    })
+    
+    console.log(this.tecnico.perfis);
     this.tecService.create(this.tecnico).subscribe(
       resposta => { //note ainda que, como eu não estou utilizando a resposta no código, posso substitui-la por ()
         this.toastr.success('Técnico cadastrado com sucesso!','Cadastro');
@@ -50,16 +55,11 @@ export class TecnicoCreateComponent implements OnInit {
       )
     }
 
-addPerfil(perfil:any):void{
-  if (this.tecnico.perfis.includes(perfil)){
-    //esta validação é para dizer que, se o perfil já está na lista, e ele clicou de novo, é porque ele quer tirar
-    this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil),1);
-  }
-  else{
-    this.tecnico.perfis.push(perfil);
-  }
-  //console.log(this.tecnico.perfis);
-}
+    onChange(e, item) {
+      //alert(e.checked);
+      this.selectedPerf[item.cod].selected = e.checked;
+      //console.log(this.selectedPerf);
+    }
     
     
     validaCampos():boolean{

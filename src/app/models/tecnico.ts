@@ -4,6 +4,6 @@ export interface Tecnico{
     cpf: string;
     email: string;
     senha: string;
-    perfis: any[]; //pode ser string ou inteiro
+    perfis: any[]; 
     dataCriacao: any; //colocamos any porque vamos trabalhar com string e com date
 }
