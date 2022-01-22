@@ -1,0 +1,41 @@
+.container{
+    width:40rem;
+    margin: auto; /*vamos deixar a div alinhada ao centro*/
+    padding: 1rem;
+    border-radius: .6rem;
+}
+
+h1,p{
+    text-align: center;
+}
+
+.full-width{
+    width: 100%;
+}
+
+img{
+    height: 12rem;
+    margin: auto;
+    
+}
+
+.section{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2%;
+}
+
+.button-box{
+    margin:5% 5% 5% 5%;
+    display:flex;
+    justify-content: space-between;
+}
+
+button{
+    width: 25%;
+}
+
+p, mat-icon{
+    opacity: .5;
+}
