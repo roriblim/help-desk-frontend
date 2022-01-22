@@ -1,0 +1,73 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="full-width">Cadastrar Cliente</h1>
+        <img class="full-width" src="assets/img/tecnico-create.svg" alt="Help Desk - Dicas de um DEV">
+        
+        <section class="section" >        
+            <mat-checkbox *ngFor="let item of selectedPerf"
+            (change)="onChange($event, item)" 
+            [checked]="item.selected" 
+            class="margin" 
+            color="primary">{{item.label}}</mat-checkbox>
+        </section>
+
+        <mat-form-field class = "full-width" appearance="legacy">
+            <mat-label>Nome</mat-label>
+            <input 
+              required 
+              [(ngModel)]="cliente.nome"
+              name="nome"
+              [formControl]="nomeControl" 
+              maxlength="50" 
+              matInput 
+              placeholder="Digite aqui seu nome...">
+            <!--o required aqui no HTML faz aparecer o asterisco de required!-->
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class = "full-width" appearance="legacy">
+            <mat-label>E-mail</mat-label>
+            <input 
+              required
+              [(ngModel)]="cliente.email"
+              name="email" 
+              [formControl]="emailControl" 
+              matInput 
+              placeholder="Digite aqui seu e-mail...">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class = "full-width" appearance="legacy">
+            <mat-label>CPF</mat-label>
+            <input 
+              required 
+              [(ngModel)]="cliente.cpf"
+              name="cpf"
+              [formControl]="cpfControl" 
+              mask="000.000.000-00" 
+              matInput 
+              placeholder="Digite aqui seu CPF...">
+            <mat-icon matSuffix>pin</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class = "full-width" appearance="legacy">
+            <mat-label>Senha</mat-label>
+            <input 
+            required
+            [(ngModel)]="cliente.senha"
+            name="senha" 
+            [formControl]="senhaControl" 
+            type="password" 
+            matInput 
+            placeholder="Digite aqui sua senha...">
+            <mat-icon matSuffix>password</mat-icon>
+          </mat-form-field>
+
+          <section class="button-box">
+            <button routerLink="../" mat-stroked-button class="mat-elevation-z4" color="warn">Cancelar</button>
+            <button (click) = "create()" [disabled]="!validaCampos()" mat-raised-button class="mat-elevation-z4" color="primary">Cadastrar</button>
+          </section>
+        </form>
+
+        <p class = "full-width">Help Desk Co.</p>
+</div>
