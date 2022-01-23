@@ -13,6 +13,7 @@ import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecn
 import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
+import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
       {path:'clientes/update/:id',component:ClienteUpdateComponent},
       {path:'clientes/delete/:id',component:ClienteDeleteComponent},
 
-      {path:'chamados',component:ChamadoListComponent}
+      {path:'chamados',component:ChamadoListComponent},
+      {path:'chamados/create',component:ChamadoCreateComponent}
     ]
 
     /*vamos colocar a rota de home como filha da rota de navcomponent, a fim de que 
