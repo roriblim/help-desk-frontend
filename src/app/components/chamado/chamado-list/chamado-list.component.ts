@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Chamado } from 'src/app/models/chamado';
@@ -17,8 +18,15 @@ export class ChamadoListComponent implements OnInit {
   displayedColumns: string[] = ['a', 'b', 'c', 'd','e', 'f','g','acoes'];
   dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  statusForm: FormGroup;
 
-  constructor(private service:ChamadoService) { }
+  constructor(private service:ChamadoService, fb: FormBuilder) {
+    this.statusForm = fb.group({
+      0: true,
+      1: true,
+      2: true,
+    });
+   }
 
   ngOnInit(): void {
     this.findAll();
@@ -55,16 +63,19 @@ export class ChamadoListComponent implements OnInit {
     {return 'ALTA';}
   }
 
-  orderByStatus(status: any):void{
+
+  onChange(e) {
     let list:Chamado[]=[];
-    this.ELEMENT_DATA.forEach(element=>{
-      if (element.status == status){
+    console.log(this.statusForm)
+    this.ELEMENT_DATA.forEach(element =>{
+      console.log(this.statusForm[element.status])
+      if(this.statusForm.value[element.status]){
         list.push(element)
       }
     })
     this.FILTERED_DATA=list;
     this.dataSource = new MatTableDataSource<Chamado>(this.FILTERED_DATA);
-    this.dataSource.paginator=this.paginator;    
+    this.dataSource.paginator=this.paginator;
   }
 
 }

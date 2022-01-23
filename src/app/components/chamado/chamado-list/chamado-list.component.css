@@ -37,7 +37,7 @@ table {
       color:rgb(204, 50, 30);
   }
 
-.mat-radio-group{
+.filter-section{
     display: flex;
     justify-content: space-around;
     margin-bottom: 1.5rem;
