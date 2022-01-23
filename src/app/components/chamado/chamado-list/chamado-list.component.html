@@ -1,1 +1,85 @@
-<p>chamado-list works!</p>
+<div class="container">
+    <div class="button-box">
+      <button  mat-raised-button class=" mat-elevation-z8" color="primary">Novo chamado</button>
+   </div>
+    <h1>Listando Chamados</h1>
+  
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+  
+
+    <mat-radio-group color="primary">
+      <mat-radio-button >ABERTO</mat-radio-button>
+      <mat-radio-button >ANDAMENTO</mat-radio-button>
+      <mat-radio-button >ENCERRADO</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="mat-elevation-z8">
+  
+      <table mat-table [dataSource]="ELEMENT_DATA">
+  
+        <!-- Coluna ID -->
+        <ng-container matColumnDef="a">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+  
+        <!-- Coluna Título -->
+        <ng-container matColumnDef="b">
+          <th mat-header-cell *matHeaderCellDef> Título </th>
+          <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+        </ng-container>
+  
+        <!-- Coluna Cliente -->
+        <ng-container matColumnDef="c">
+          <th mat-header-cell *matHeaderCellDef> Cliente </th>
+          <td mat-cell *matCellDef="let element"> {{element.nomeCliente}} </td>
+        </ng-container>
+
+        <!-- Coluna Técnico -->
+        <ng-container matColumnDef="d">
+          <th mat-header-cell *matHeaderCellDef> Técnico </th>
+          <td mat-cell *matCellDef="let element"> {{element.nomeTecnico}} </td>
+        </ng-container>        
+  
+        <!-- Coluna Data de Abertura -->
+        <ng-container matColumnDef="e">
+          <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
+          <td mat-cell *matCellDef="let element"> {{element.dataAbertura}} </td>
+        </ng-container>
+
+        <!-- Coluna Prioridade -->
+        <ng-container matColumnDef="f">
+          <th mat-header-cell *matHeaderCellDef> Prioridade </th>
+          <td mat-cell *matCellDef="let element"> {{element.prioridade}} </td>
+        </ng-container>
+
+        <!-- Coluna Status -->
+        <ng-container matColumnDef="g">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>  
+
+        <!-- Coluna Ações -->
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef> Ações </th>
+          <td mat-cell *matCellDef="let element"> 
+            <a routerLink="">
+              <i class="material-icons edit">edit</i>
+            </a>
+            <a routerLink="">
+              <i class="material-icons delete">visibility</i>
+            </a>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
