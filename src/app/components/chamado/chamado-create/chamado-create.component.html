@@ -5,7 +5,11 @@
     <form class="form">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Título do Chamado</mat-label>
-          <input matInput placeholder="Ex. Trocar bateria de notebook">
+          <input 
+          [formControl]="tituloControl"
+          required 
+          matInput 
+          placeholder="Ex. Trocar bateria de notebook">
         </mat-form-field>
       
     </form>
@@ -13,7 +17,7 @@
     <div class="status-prioridade">
         <mat-form-field appearance="outline">
             <mat-label>Selecione um status</mat-label>
-            <mat-select>
+            <mat-select [formControl]="statusControl" required>
               <mat-option value="0">ABERTO</mat-option>
               <mat-option value="1">EM ANDAMENTO</mat-option>
               <mat-option value="2">ENCERRADO</mat-option>
@@ -21,7 +25,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Selecione uma prioridade</mat-label>
-            <mat-select>
+            <mat-select [formControl]="prioridadeControl" required>
               <mat-option value="0">BAIXA</mat-option>
               <mat-option value="1">MÉDIA</mat-option>
               <mat-option value="2">ALTA</mat-option>
@@ -32,7 +36,7 @@
     <div class="tecnico">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Selecione um técnico</mat-label>
-            <mat-select>
+            <mat-select [formControl]="tecnicoControl"   required >
               <mat-option value="0">Valdir</mat-option>
             </mat-select>
         </mat-form-field>
@@ -41,7 +45,7 @@
     <div class="cliente">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Selecione um cliente</mat-label>
-            <mat-select>
+            <mat-select [formControl]="clienteControl"   required >
               <mat-option value="0">Albert Einstein</mat-option>
             </mat-select>
         </mat-form-field>
@@ -50,13 +54,18 @@
     <form class="form">
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Descrição do Chamado</mat-label>
-        <textarea class = "descricao" matInput placeholder="Deixe aqui a descrição do chamado..."></textarea>
+        <textarea  
+        [formControl]="descricaoControl"   
+        required
+        class = "descricao" 
+        matInput 
+        placeholder="Deixe aqui a descrição do chamado..."></textarea>
       </mat-form-field>
 
 
     <section class="button-box">
-        <button mat-stroked-button mat-elevation-z4 color="warn">Cancelar</button>
-         <button mat-raised-button mat-elevation-z4 color="primary">Criar</button>
+        <button  mat-stroked-button mat-elevation-z4 color="warn">Cancelar</button>
+         <button [disabled]="!validaCampos()" mat-raised-button mat-elevation-z4 color="primary">Criar</button>
          
     </section>
 </form>
