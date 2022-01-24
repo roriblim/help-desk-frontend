@@ -26,7 +26,7 @@ img{
     width: 49%;
 }
 
-.descricao{
+.observacoes{
     min-height: 8rem;
     max-height: 8rem;
 }
@@ -44,3 +44,4 @@ button{
 p{
     opacity: .5;
 }
+
