@@ -42,3 +42,26 @@ table {
     justify-content: space-around;
     margin-bottom: 1.5rem;
 }
+.alta{
+    background: red;
+    color: white;
+    font-weight: bolder;
+    border-radius: 1.5rem;
+
+}
+
+.media{
+    background: yellow;
+    font-weight: bolder;
+    border-radius: 1.5rem;
+}
+
+.baixa{
+    border-radius: 1.5rem;
+    
+}
+
+.centralize{
+    text-align: center;
+    
+}
