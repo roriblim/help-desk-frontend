@@ -107,22 +107,6 @@ export class ChamadoUpdateComponent implements OnInit {
            this.clienteControl.valid;
   }
 
-  retornaStatus(status: any):string{
-    if (status=='0'){
-      return 'ABERTO';
-    } else if (status=='1'){
-      return 'EM ANDAMENTO';
-    } else
-    {return 'ENCERRADO';}
-  }
 
-  retornaPrioridade(prioridade: any):string{
-    if (prioridade=='0'){
-      return 'BAIXA';
-    } else if (prioridade=='1'){
-      return 'MÉDIA';
-    } else
-    {return 'ALTA';}
-  }
 
 }
